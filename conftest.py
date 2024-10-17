@@ -6,7 +6,7 @@ import random
 @pytest.fixture(scope="module")  # создание и удаление уникального пользователя
 def unique_user():
     user_data = {
-        "email": "unique_user_{}@mail.ru".format(random.randint(1000, 9999)), # Генерация случайного числа для уникальности
+        "email": "user_{}@mail.ru".format(random.randint(1000, 9999)), # Генерация случайного числа
         "password": "password777",
         "name": "Username"
     }
