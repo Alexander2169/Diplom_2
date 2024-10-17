@@ -1,5 +1,5 @@
 from conftest import *
-class TestCreateUser:
+class TestCreateUser: # Создание пользователя
 
     # Проверяем, что можно создать уникального пользователя
     def test_create_unique_user(self, unique_user):
