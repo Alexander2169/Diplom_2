@@ -53,4 +53,9 @@ class UserClient:
         response = requests.get(url, headers=headers)
         return response
 
-
+    @staticmethod
+    def create_order(token, ingredients):
+        url = f"{BASE_URL}/orders"
+        headers = {"Authorization": f"Bearer {token}"} if token else {}
+        response = requests.post(url, json={"ingredients": ingredients}, headers=headers)
+        return response
