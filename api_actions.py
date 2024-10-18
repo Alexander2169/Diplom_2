@@ -1,5 +1,6 @@
 import requests
 from urls import *
+
 class User:
     def __init__(self, name=None, email=None, password=None):
         self.name = name
@@ -29,11 +30,27 @@ class UserClient:
 
     @staticmethod
     def delete_user(token):
-        url = DELETE_USER_PEN
+        url = USER_PEN
         headers = {"Authorization": f"Bearer {token}"}
         response = requests.delete(url, headers=headers)
         return response
 
     @staticmethod
+    def patch_user(token, updated_data):
+        url = USER_PEN  # Здесь нужно указать правильный URL для PATCH-запроса
+        headers = {"Authorization": f"Bearer {token}"}
+        response = requests.patch(url, json=updated_data, headers=headers)
+        return response
+
+    @staticmethod
     def check_failed_response_auth_register(response):
         assert response.status_code != 200
+
+    @staticmethod
+    def get_user(token):
+        url = USER_PEN
+        headers = {"Authorization": f"Bearer {token}"}
+        response = requests.get(url, headers=headers)
+        return response
+
+
