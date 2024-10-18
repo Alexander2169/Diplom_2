@@ -1,4 +1,4 @@
-from data import *
+from utils import *
 
 class UserTestsCreation(UserData): # Создание пользователя
 

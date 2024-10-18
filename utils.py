@@ -4,7 +4,7 @@ import unittest
 class UserData(unittest.TestCase):
     def setUp(self):
         self.name = "Alex"
-        self.email = "dadic5557@mail.ru"
+        self.email = "dadic3333@mail.ru"
         self.password = "password"
         self.user_client = UserClient()
         self.user = User(self.name, self.email, self.password)

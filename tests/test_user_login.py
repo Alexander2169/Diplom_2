@@ -1,4 +1,4 @@
-from data import *
+from utils import *
 
 class UserTestsLogin(UserData): # Логин пользователя
     def test_login_existing_user(self): # Проверяем логин под существующим пользователем

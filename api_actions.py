@@ -10,7 +10,7 @@ class UserClient:
 
     @staticmethod
     def post_create_new_user(user):
-        url = REGISTER
+        url = REGISTER_PEN
         response = requests.post(url, json={
             "name": user.name,
             "email": user.email,
@@ -20,7 +20,7 @@ class UserClient:
 
     @staticmethod
     def post_login_user(email, password):
-        url = LOGIN
+        url = LOGIN_PEN
         response = requests.post(url, json={
             "email": email,
             "password": password
@@ -29,7 +29,7 @@ class UserClient:
 
     @staticmethod
     def delete_user(token):
-        url = DELETE_USER
+        url = DELETE_USER_PEN
         headers = {"Authorization": f"Bearer {token}"}
         response = requests.delete(url, headers=headers)
         return response
