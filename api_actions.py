@@ -37,7 +37,7 @@ class UserClient:
 
     @staticmethod
     def patch_user(token, updated_data):
-        url = USER_PEN  # Здесь нужно указать правильный URL для PATCH-запроса
+        url = USER_PEN
         headers = {"Authorization": f"Bearer {token}"}
         response = requests.patch(url, json=updated_data, headers=headers)
         return response
@@ -55,7 +55,38 @@ class UserClient:
 
     @staticmethod
     def create_order(token, ingredients):
-        url = f"{BASE_URL}/orders"
+        url = ORDER_PEN
+
+        # Проверка на наличие ингредиентов
+        if not ingredients:
+            return requests.Response()  # Возвращаем пустой объект Response для обработки в тестах
+
         headers = {"Authorization": f"Bearer {token}"} if token else {}
         response = requests.post(url, json={"ingredients": ingredients}, headers=headers)
+
+        # Обработка ошибок
+        if response.status_code == 400:
+            return response  # Возвращаем оригинальный ответ для 400
+        elif response.status_code == 500:
+            return response  # Возвращаем оригинальный ответ для 500
+
+        return response  # Возвращаем оригинальный ответ для успешного запроса
+
+    @staticmethod
+    def get_ingredients():
+        url = INGREDIENTS_PEN
+        response = requests.get(url)
+        return response
+
+    @staticmethod
+    def get_orders(token):
+        url = ORDER_PEN
+        headers = {"Authorization": f"Bearer {token}"}
+        response = requests.get(url, headers=headers)
+        return response
+
+    @staticmethod
+    def get_all_orders():
+        url = ORDER_PEN_ALL
+        response = requests.get(url)
         return response
