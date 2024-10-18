@@ -14,11 +14,4 @@ class UserData(unittest.TestCase):
         if self.token:
             self.user_client.delete_user(self.token)
 
-class TestData:
-    @staticmethod
-    def get_user_data():
-        return User(name="Alex", email="dadic5578@mail.ru", password="password")
 
-    @staticmethod
-    def get_invalid_user_data():
-        return User(name=None, email=None, password=None)

@@ -1,6 +1,6 @@
 from data import *
 
-class UserTestsLogin(TestData, UserData):
+class UserTestsLogin(UserData):
     def test_login_existing_user(self):
         response = self.user_client.post_login_user(self.user.email, self.user.password)
         assert response.status_code == 200
