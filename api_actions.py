@@ -19,6 +19,15 @@ class UserClient:
         return response
 
     @staticmethod
+    def post_login_user(email, password):
+        url = LOGIN
+        response = requests.post(url, json={
+            "email": email,
+            "password": password
+        })
+        return response
+
+    @staticmethod
     def delete_user(token):
         url = DELETE_USER
         headers = {"Authorization": f"Bearer {token}"}
