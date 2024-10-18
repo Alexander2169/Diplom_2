@@ -1,7 +1,7 @@
 from utils import *
 import allure
 
-class TestChangeUser(UserData): # Изменение данных пользователя
+class TestChangeUserData(UserData): # Изменение данных пользователя
     @allure.title('Изменение email для авторизованного пользователя')
     def test_change_user_email_with_authorization(self):
         updated_user_data = {"email": "newemail@mail.ru"}
