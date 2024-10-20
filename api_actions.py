@@ -92,7 +92,7 @@ class UserClient:
         return response
 
     @staticmethod
-    def get_auth_token():
+    def get_auth_token(): # Tокен авторизованного пользователя
         return ("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
                 "eyJpZCI6IjY3MTI5YmViOWVkMjgwMDAxYjRlNzBmZCIsImlhdCI6MTcyOTI3MjgxMSwiZXhwIjoxNzI5Mjc0MDExfQ."
                 "hnZgWt6AYESWLEOEUKZU_vfYeCh0ZW7XE1vobFiWIL8")

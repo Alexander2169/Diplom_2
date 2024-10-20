@@ -39,4 +39,3 @@ class TestCreateOrder(UserData):  # Класс для тестирования �
 
 
 
-
