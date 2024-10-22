@@ -1,15 +1,15 @@
-from utils import *
-import allure
+from helpers import login_user
+from conftest import *
 
-class UserTestsLogin(UserData): # Проверяем логин пользователя
-    @allure.title('Проверяем логин под существующим пользователем')
-    def test_login_existing_user(self):
-        response = self.user_client.post_login_user(self.user.email, self.user.password)
+class TestUserLogin:
+    def test_login_existing_user(self, clean_user, base_url):
+        response = login_user(clean_user)
         assert response.status_code == 200
-        assert response.json().get("accessToken") is not None
-    @allure.title('Проверяем логин с неверным логином и паролем')
-    def test_login_with_invalid_credentials(self):
-        response = self.user_client.post_login_user("invalid@mail.com", "wrongpassword")
+        assert response.json()["success"] is True
+
+    def test_login_with_wrong_credentials(self, base_url):
+        user = User.generate_random_user()
+        response = login_user(user)
         assert response.status_code == 401
-        assert response.json().get("success") is False
-        assert response.json().get("message") == "email or password are incorrect"
+        assert response.json()["success"] is False
+

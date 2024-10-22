@@ -1,9 +1,7 @@
-BASE_URL = "https://stellarburgers.nomoreparties.site/api"
+BASE_URL = "https://stellarburgers.nomoreparties.site"
 
-REGISTER_PEN = f"{BASE_URL}/auth/register"
-LOGIN_PEN = f"{BASE_URL}/auth/login"
-USER_PEN = f"{BASE_URL}/auth/user"
-ORDER_PEN = f"{BASE_URL}/orders"
-ORDER_PEN_ALL = f"{BASE_URL}/orders/all"
-INGREDIENTS_PEN = f"{BASE_URL}/ingredients"
-
+USER_REGISTER = f'{BASE_URL}/api/auth/register'
+USER_LOGIN = f'{BASE_URL}/api/auth/login'
+USER_UPDATE = f'{BASE_URL}/api/auth/user'
+ORDER_CREATE = f'{BASE_URL}/api/orders'
+ORDER_GET = f'{BASE_URL}/api/orders'
