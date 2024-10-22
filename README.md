@@ -83,6 +83,7 @@ DIPLOM_2/
 
 ### Тесты для вывода из терминала - проверены командой: pytest -v.
 ### Команда для запуска с записью отчета в allure_results: `pytest tests --alluredir=allure_results`.
+### Отчёт в формате веб-страницы: `allure serve allure_results`. 
 
 
 
