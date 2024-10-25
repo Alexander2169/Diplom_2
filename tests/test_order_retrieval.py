@@ -10,6 +10,7 @@ class TestOrderRetrieval: # Тесты для получения заказов
         response = get_orders(token)
         assert response.status_code == 200
         assert response.json()["success"] is True
+
     @allure.title('Проверка получения заказов неавторизованным пользователем')
     def test_get_orders_as_unauthorized_user(self, base_url):
         response = get_orders("")
