@@ -1,0 +1,1 @@
+{"uuid": "2ee28bf7-fba2-4a66-b134-8acdc52132ea", "children": ["6dac53c8-19ad-474f-afaa-bbbcd8ebf1ae"], "befores": [{"name": "clean_user", "status": "passed", "steps": [{"name": "Генерирует случайного пользователя", "status": "passed", "start": 1730114388272, "stop": 1730114388272}], "start": 1730114388272, "stop": 1730114388272}], "start": 1730114388272, "stop": 1730114391509}
