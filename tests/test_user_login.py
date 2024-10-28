@@ -1,12 +1,17 @@
 import allure
-from helpers import login_user
+from helpers import *
 from conftest import *
 
-class TestUserLogin: # Тесты для логина пользователей
+class TestUserLogin:  # Тесты для логина пользователей
     @allure.title('Проверка логина под существующим пользователем')
-    def test_login_existing_user(self, clean_user, base_url):
-        response = login_user(clean_user)
-        assert response.status_code == 200
+    def test_login_existing_user(self, base_url):
+        # Сначала создаем пользователя
+        user = User.generate_random_user()
+        create_user(user)  # Регистрация пользователя
+
+        # Теперь пробуем войти
+        response = login_user(user)
+        assert response.status_code == 200, "Login failed"
         assert response.json()["success"] is True
 
     @allure.title('Проверка логина с неверными данными')
@@ -15,5 +20,6 @@ class TestUserLogin: # Тесты для логина пользователей
         response = login_user(user)
         assert response.status_code == 401
         assert response.json()["success"] is False
+
 
 
