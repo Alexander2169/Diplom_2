@@ -1,4 +1,3 @@
-import allure
 from helpers import *
 from conftest import *
 
@@ -49,7 +48,9 @@ class TestUserUpdate:  # Тесты для обновления данных п�
         updated_user.email = "new_email@mail.ru"
         response = update_user(updated_user, "")
         assert response.status_code == 401
-        assert response.json()["success"] is False
+        response_data = response.json()
+        assert response_data["success"] is False
+        assert "message" in response_data  # Проверяем наличие сообщения об ошибке
 
     @allure.title('Проверка обновления имени без авторизации')
     def test_update_user_without_auth_name(self, base_url):
@@ -57,7 +58,10 @@ class TestUserUpdate:  # Тесты для обновления данных п�
         updated_user.name = "NewName"
         response = update_user(updated_user, "")
         assert response.status_code == 401
-        assert response.json()["success"] is False
+        response_data = response.json()
+        assert response_data["success"] is False
+        assert "message" in response_data  # Проверяем наличие сообщения об ошибке
+
 
 
 

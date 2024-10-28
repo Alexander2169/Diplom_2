@@ -1,4 +1,3 @@
-import allure
 from helpers import *
 from conftest import *
 
@@ -19,7 +18,9 @@ class TestUserCreation:  # Тесты для создания пользоват
         # Теперь пробуем зарегистрировать его снова
         response = create_user(user)
         assert response.status_code == 403
-        assert response.json()["success"] is False
+        response_data = response.json()
+        assert response_data["success"] is False
+        assert "message" in response_data  # Проверяем наличие сообщения об ошибке
 
     @allure.title('Проверка создания пользователя без email')
     def test_create_user_without_email(self, base_url):
@@ -27,7 +28,10 @@ class TestUserCreation:  # Тесты для создания пользоват
         user.email = None
         response = create_user(user)
         assert response.status_code == 403
-        assert response.json()["success"] is False
+        response_data = response.json()
+        assert response_data["success"] is False
+        assert "message" in response_data  # Проверяем наличие сообщения об ошибке
+
 
 
 

@@ -1,4 +1,3 @@
-import allure
 from helpers import *
 from conftest import *
 
@@ -19,7 +18,10 @@ class TestUserLogin:  # Тесты для логина пользователе�
         user = generate_random_user()  # Используем функцию из helpers
         response = login_user(user)
         assert response.status_code == 401
-        assert response.json()["success"] is False
+        response_data = response.json()
+        assert response_data["success"] is False
+        assert "message" in response_data  # Проверяем наличие сообщения об ошибке
+
 
 
 

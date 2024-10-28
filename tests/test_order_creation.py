@@ -1,4 +1,3 @@
-import allure
 from helpers import *
 from data import INGREDIENTS
 from conftest import *
@@ -44,7 +43,9 @@ class TestOrderCreation:  # Тесты для создания заказов
 
         response = create_order([], token)
         assert response.status_code == 400
-        assert response.json()["success"] is False
+        response_data = response.json()
+        assert response_data["success"] is False
+        assert "message" in response_data  # Проверяем наличие сообщения об ошибке
 
     @allure.title('Проверка создания заказа с неверным ID ингредиента')
     def test_create_order_with_wrong_ingredient_hash(self, clean_user, base_url):
@@ -62,7 +63,10 @@ class TestOrderCreation:  # Тесты для создания заказов
         ingredient_ids = ['61c0c5a71d1f088107773887']  # Неправильный ID
         response = create_order(ingredient_ids, token)
         assert response.status_code == 400
-        assert response.json()["success"] is False
+        response_data = response.json()
+        assert response_data["success"] is False
+        assert "message" in response_data  # Проверяем наличие сообщения об ошибке
+
 
 
 
