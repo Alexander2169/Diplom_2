@@ -6,7 +6,7 @@ class TestUserUpdate:  # Тесты для обновления данных п�
     @allure.title('Проверка обновления email с авторизацией')
     def test_update_email_with_auth(self, base_url):
         # Сначала создаем пользователя
-        user = User.generate_random_user()
+        user = generate_random_user()  # Используем функцию из helpers
         create_user(user)  # Регистрация пользователя
 
         # Теперь пробуем войти
@@ -26,7 +26,7 @@ class TestUserUpdate:  # Тесты для обновления данных п�
     @allure.title('Проверка обновления имени с авторизацией')
     def test_update_name_with_auth(self, base_url):
         # Сначала создаем пользователя
-        user = User.generate_random_user()
+        user = generate_random_user()  # Используем функцию из helpers
         create_user(user)  # Регистрация пользователя
 
         # Теперь пробуем войти
@@ -45,7 +45,7 @@ class TestUserUpdate:  # Тесты для обновления данных п�
 
     @allure.title('Проверка обновления email без авторизации')
     def test_update_user_without_auth_email(self, base_url):
-        updated_user = User.generate_random_user()
+        updated_user = generate_random_user()  # Используем функцию из helpers
         updated_user.email = "new_email@mail.ru"
         response = update_user(updated_user, "")
         assert response.status_code == 401
@@ -53,11 +53,12 @@ class TestUserUpdate:  # Тесты для обновления данных п�
 
     @allure.title('Проверка обновления имени без авторизации')
     def test_update_user_without_auth_name(self, base_url):
-        updated_user = User.generate_random_user()
+        updated_user = generate_random_user()  # Используем функцию из helpers
         updated_user.name = "NewName"
         response = update_user(updated_user, "")
         assert response.status_code == 401
         assert response.json()["success"] is False
+
 
 
 

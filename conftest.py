@@ -1,6 +1,6 @@
 import pytest
 from urls import BASE_URL
-from data import User
+from helpers import generate_random_user  # Убедитесь, что импортируете только generate_random_user
 
 @pytest.fixture(scope="module")  # Возвращает базовый URL для API
 def base_url():
@@ -8,11 +8,12 @@ def base_url():
 
 @pytest.fixture(scope="function")  # Создает временного пользователя
 def clean_user(base_url):
-    return User.generate_random_user()
+    return generate_random_user()
 
 @pytest.fixture(scope="function")  # Создает пользователя с уникальным email
 def user_with_email(base_url):
-    return User.generate_random_user()
+    return generate_random_user()
+
 
 
 

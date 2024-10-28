@@ -1,5 +1,19 @@
+import random
+import string
 import requests
 from urls import USER_REGISTER, USER_LOGIN, USER_UPDATE, ORDER_CREATE, ORDER_GET
+
+class User:  # Содержит классы и методы для работы с данными пользователей
+    def __init__(self, email, password, name):  # Инициализирует объект пользователя с email, паролем и именем
+        self.email = email
+        self.password = password
+        self.name = name
+
+def generate_random_user():  # Генерирует случайного пользователя
+    email = ''.join(random.choices(string.ascii_lowercase, k=10)) + "@mail.ru"
+    password = ''.join(random.choices(string.ascii_letters + string.digits, k=12))
+    name = ''.join(random.choices(string.ascii_letters, k=7))
+    return User(email, password, name)
 
 def create_user(user):  # Создает пользователя через API
     return requests.post(USER_REGISTER, json=user.__dict__)
@@ -24,6 +38,7 @@ def register_and_delete_user(user):  # Регистрация и удалени�
     if response.status_code == 200:
         token = response.json()["accessToken"]
         delete_user(token)
+
 
 
 

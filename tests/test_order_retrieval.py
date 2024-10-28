@@ -1,6 +1,5 @@
 import allure
 from helpers import *
-from data import User
 from conftest import *
 
 class TestOrderRetrieval:  # Тесты для получения заказов
@@ -26,5 +25,6 @@ class TestOrderRetrieval:  # Тесты для получения заказов
         response = get_orders("")
         assert response.status_code == 401
         assert response.json()["success"] is False
+
 
 
