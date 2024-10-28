@@ -1,6 +1,6 @@
 import pytest
 from urls import BASE_URL
-from helpers import generate_random_user  # Убедитесь, что импортируете только generate_random_user
+from helpers import generate_random_user
 
 @pytest.fixture(scope="module")  # Возвращает базовый URL для API
 def base_url():
