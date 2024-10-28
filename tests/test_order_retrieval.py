@@ -1,12 +1,22 @@
 import allure
 from helpers import *
+from data import User
 from conftest import *
 
-class TestOrderRetrieval: # Тесты для получения заказов
+class TestOrderRetrieval:  # Тесты для получения заказов
     @allure.title('Проверка получения заказов авторизованным пользователем')
     def test_get_orders_as_authorized_user(self, clean_user, base_url):
+        # Сначала зарегистрируем пользователя
+        registration_response = create_user(clean_user)
+        assert registration_response.status_code == 200, "User registration failed"
+
+        # Теперь попробуем войти
         response = login_user(clean_user)
-        token = response.json()["accessToken"]
+        assert response.status_code == 200, "Login failed"
+
+        token = response.json().get("accessToken")
+        assert token is not None, "Access token is missing"
+
         response = get_orders(token)
         assert response.status_code == 200
         assert response.json()["success"] is True
@@ -16,4 +26,5 @@ class TestOrderRetrieval: # Тесты для получения заказов
         response = get_orders("")
         assert response.status_code == 401
         assert response.json()["success"] is False
+
 
