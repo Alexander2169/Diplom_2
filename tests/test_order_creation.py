@@ -1,10 +1,10 @@
 from helpers import *
 from data import *
-from conftest import *
 
 class TestOrderCreation:  # Тесты для создания заказов
     @allure.title('Проверка создания заказа с авторизацией')
-    def test_create_order_with_auth(self, clean_user):
+    def test_create_order_with_auth(self):
+        clean_user = generate_random_user()  # Создаем временного пользователя
         # Сначала зарегистрируем пользователя
         registration_response = create_user(clean_user)
         assert registration_response.status_code == 200, "User registration failed"
@@ -29,7 +29,8 @@ class TestOrderCreation:  # Тесты для создания заказов
         assert response.json()["success"] is True
 
     @allure.title('Проверка создания заказа без ингредиентов')
-    def test_create_order_without_ingredients(self, clean_user):
+    def test_create_order_without_ingredients(self):
+        clean_user = generate_random_user()  # Создаем временного пользователя
         # Сначала зарегистрируем пользователя
         registration_response = create_user(clean_user)
         assert registration_response.status_code == 200, "User registration failed"
@@ -48,7 +49,8 @@ class TestOrderCreation:  # Тесты для создания заказов
         assert "message" in response_data  # Проверяем наличие сообщения об ошибке
 
     @allure.title('Проверка создания заказа с неверным ID ингредиента')
-    def test_create_order_with_wrong_ingredient_hash(self, clean_user):
+    def test_create_order_with_wrong_ingredient_hash(self):
+        clean_user = generate_random_user()  # Создаем временного пользователя
         # Сначала зарегистрируем пользователя
         registration_response = create_user(clean_user)
         assert registration_response.status_code == 200, "User registration failed"
@@ -66,6 +68,7 @@ class TestOrderCreation:  # Тесты для создания заказов
         response_data = response.json()
         assert response_data["success"] is False
         assert "message" in response_data  # Проверяем наличие сообщения об ошибке
+
 
 
 

@@ -1,6 +1,5 @@
 from helpers import *
-from conftest import *
-from data import *
+
 
 class TestUserCreation:  # Тесты для создания пользователей
     @allure.title('Проверка создания уникального пользователя')

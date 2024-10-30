@@ -1,5 +1,5 @@
 from helpers import *
-from conftest import *
+
 
 class TestUserUpdate:  # Тесты для обновления данных пользователей
     @allure.title('Проверка обновления email с авторизацией')

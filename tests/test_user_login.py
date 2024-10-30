@@ -1,5 +1,5 @@
 from helpers import *
-from conftest import *
+
 
 class TestUserLogin:  # Тесты для логина пользователей
     @allure.title('Проверка логина под существующим пользователем')

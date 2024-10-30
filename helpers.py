@@ -17,6 +17,14 @@ def generate_random_user():  # Генерирует случайного пол�
     name = ''.join(random.choices(string.ascii_letters, k=7))
     return User(email, password, name)
 
+@allure.step("Создает временного пользователя")
+def clean_user():  # Создает временного пользователя
+    return generate_random_user()
+
+@allure.step("Создает пользователя с уникальным email")
+def user_with_email():  # Создает пользователя с уникальным email
+    return generate_random_user()
+
 @allure.step("Создает пользователя через API")
 def create_user(user):  # Создает пользователя через API
     return requests.post(USER_REGISTER, json=user.__dict__)
