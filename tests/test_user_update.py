@@ -3,7 +3,7 @@ from conftest import *
 
 class TestUserUpdate:  # Тесты для обновления данных пользователей
     @allure.title('Проверка обновления email с авторизацией')
-    def test_update_email_with_auth(self, base_url):
+    def test_update_email_with_auth(self):
         # Сначала создаем пользователя
         user = generate_random_user()  # Используем функцию из helpers
         create_user(user)  # Регистрация пользователя
@@ -23,7 +23,7 @@ class TestUserUpdate:  # Тесты для обновления данных п�
         assert response.json()["user"]["email"] == updated_email
 
     @allure.title('Проверка обновления имени с авторизацией')
-    def test_update_name_with_auth(self, base_url):
+    def test_update_name_with_auth(self):
         # Сначала создаем пользователя
         user = generate_random_user()  # Используем функцию из helpers
         create_user(user)  # Регистрация пользователя
@@ -43,7 +43,7 @@ class TestUserUpdate:  # Тесты для обновления данных п�
         assert response.json()["user"]["name"] == updated_name
 
     @allure.title('Проверка обновления email без авторизации')
-    def test_update_user_without_auth_email(self, base_url):
+    def test_update_user_without_auth_email(self):
         updated_user = generate_random_user()  # Используем функцию из helpers
         updated_user.email = "new_email@mail.ru"
         response = update_user(updated_user, "")
@@ -53,7 +53,7 @@ class TestUserUpdate:  # Тесты для обновления данных п�
         assert "message" in response_data  # Проверяем наличие сообщения об ошибке
 
     @allure.title('Проверка обновления имени без авторизации')
-    def test_update_user_without_auth_name(self, base_url):
+    def test_update_user_without_auth_name(self):
         updated_user = generate_random_user()  # Используем функцию из helpers
         updated_user.name = "NewName"
         response = update_user(updated_user, "")

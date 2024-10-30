@@ -1,5 +1,4 @@
-# базовый URL и эндпоинты API
-BASE_URL = "https://stellarburgers.nomoreparties.site"
+from data import BASE_URL
 
 # Эндпоинт для регистрации нового пользователя
 USER_REGISTER = f'{BASE_URL}/api/auth/register'  # Регистрация пользователя

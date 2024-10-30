@@ -1,16 +1,17 @@
 from helpers import *
 from conftest import *
+from data import *
 
 class TestUserCreation:  # Тесты для создания пользователей
     @allure.title('Проверка создания уникального пользователя')
-    def test_create_unique_user(self, base_url):
+    def test_create_unique_user(self):
         user = generate_random_user()  # Используем функцию из helpers
         response = create_user(user)
         assert response.status_code == 200
         assert response.json()["success"] is True
 
     @allure.title('Проверка создания уже зарегистрированного пользователя')
-    def test_create_registered_user(self, base_url):
+    def test_create_registered_user(self):
         # Сначала создаем пользователя
         user = generate_random_user()  # Используем функцию из helpers
         create_user(user)  # Регистрация пользователя
@@ -23,7 +24,7 @@ class TestUserCreation:  # Тесты для создания пользоват
         assert "message" in response_data  # Проверяем наличие сообщения об ошибке
 
     @allure.title('Проверка создания пользователя без email')
-    def test_create_user_without_email(self, base_url):
+    def test_create_user_without_email(self):
         user = generate_random_user()  # Используем функцию из helpers
         user.email = None
         response = create_user(user)
