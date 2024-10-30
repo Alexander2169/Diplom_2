@@ -1,4 +1,6 @@
+from api_requests import *
 from helpers import *
+
 
 class TestOrderRetrieval:  # Тесты для получения заказов
     @allure.title('Проверка получения заказов авторизованным пользователем')

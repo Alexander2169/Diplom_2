@@ -1,5 +1,5 @@
+from api_requests import *
 from helpers import *
-
 
 class TestUserLogin:  # Тесты для логина пользователей
     @allure.title('Проверка логина под существующим пользователем')

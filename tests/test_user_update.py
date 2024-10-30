@@ -1,5 +1,5 @@
+from api_requests import *
 from helpers import *
-
 
 class TestUserUpdate:  # Тесты для обновления данных пользователей
     @allure.title('Проверка обновления email с авторизацией')
