@@ -1,5 +1,5 @@
 import requests
-from urls import USER_REGISTER, USER_LOGIN, USER_UPDATE, ORDER_CREATE, ORDER_GET
+from api.urls import USER_REGISTER, USER_LOGIN, USER_UPDATE, ORDER_CREATE, ORDER_GET
 
 class ApiRequests:  # Класс для работы с API
     @staticmethod

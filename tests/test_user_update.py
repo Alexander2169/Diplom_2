@@ -1,5 +1,5 @@
 import allure
-from api_requests import ApiRequests
+from api.api_requests import ApiRequests
 from helpers import generate_random_user
 
 class TestUserUpdate:  # Тесты для обновления данных пользователей
