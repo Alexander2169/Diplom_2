@@ -17,14 +17,6 @@ def generate_random_user():  # Генерирует случайного пол�
     name = ''.join(random.choices(string.ascii_letters, k=7))
     return User(email, password, name)
 
-@allure.step("Создает временного пользователя")
-def clean_user():  # Создает временного пользователя
-    return generate_random_user()
-
-@allure.step("Создает пользователя с уникальным email")
-def user_with_email():  # Создает пользователя с уникальным email
-    return generate_random_user()
-
 @allure.step("Создает пользователя через API")
 def create_user(user):  # Создает пользователя через API
     return requests.post(USER_REGISTER, json=user.__dict__)
@@ -49,12 +41,7 @@ def create_order(ingredient_ids, token):  # Создает заказ с ука�
 def get_orders(token):  # Получает заказы пользователя
     return requests.get(ORDER_GET, headers={"Authorization": token})
 
-@allure.step("Регистрация и удаление пользователя")
-def register_and_delete_user(user):  # Регистрация и удаление пользователя
-    response = create_user(user)
-    if response.status_code == 200:
-        token = response.json()["accessToken"]
-        delete_user(token)
+
 
 
 
